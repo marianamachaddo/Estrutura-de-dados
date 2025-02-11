@@ -1,0 +1,98 @@
+package util;
+
+public class ListArray {
+
+    // Constantes
+    final public static int TAMANHO_INICIAL = 3;
+    final public static int FATOR_CRESCIMENTO = 5;
+    final public static int NAO_ESTA_PRESENTE = -1;
+
+    // Atributos
+    private Object[] arrayInterno;
+    private int numElementos;
+
+    // Construtor
+    public ListArray() {
+        this.numElementos = 0;
+        this.arrayInterno = new Object[TAMANHO_INICIAL];
+    }
+
+    // Verifica necessidade de crescimento do array
+    private void verificarNecessidadeDeCrescimento() {
+        int tamanho = this.arrayInterno.length;
+        if (tamanho == this.numElementos) {
+            Object[] novoArray = new Object[tamanho + FATOR_CRESCIMENTO];
+            for (int i = 0; i < tamanho; i++) {
+                novoArray[i] = this.arrayInterno[i];
+            }
+            this.arrayInterno = novoArray;
+        }
+    }
+
+    // Adiciona elemento ao final da lista
+    public boolean adicionar(Object elemento) {
+        this.verificarNecessidadeDeCrescimento();
+        this.arrayInterno[this.numElementos] = elemento;
+        this.numElementos++;
+        return true;
+    }
+
+    // Adiciona elemento em posição específica
+    public boolean adicionar(Object elemento, int posicao) {
+        if (posicao < 0 || posicao > this.numElementos) {
+            return false;
+        }
+        this.verificarNecessidadeDeCrescimento();
+        for (int i = this.numElementos; i > posicao; i--) {
+            this.arrayInterno[i] = this.arrayInterno[i - 1];
+        }
+        this.arrayInterno[posicao] = elemento;
+        this.numElementos++;
+        return true;
+    }
+
+    // Retorna elemento na posição indicada
+    public Object obter(int posicao) {
+        if (posicao < 0 || posicao >= this.numElementos) {
+            return null;
+        }
+        return this.arrayInterno[posicao];
+    }
+
+    // Retorna a posição de um elemento
+    public int posicaoDe(Object elemento) {
+        for (int i = 0; i < this.numElementos; i++) {
+            if (this.arrayInterno[i].equals(elemento)) {
+                return i;
+            }
+        }
+        return NAO_ESTA_PRESENTE;
+    }
+
+    // Remove elemento na posição indicada
+    public boolean remover(int posicao) {
+        if (posicao < 0 || posicao >= this.numElementos) {
+            return false;
+        }
+        for (int i = posicao; i < this.numElementos - 1; i++) {
+            this.arrayInterno[i] = this.arrayInterno[i + 1];
+        }
+        this.arrayInterno[this.numElementos - 1] = null;
+        this.numElementos--;
+        return true;
+    }
+
+    // Remove um elemento específico
+    public boolean remover(Object elemento) {
+        int posicao = this.posicaoDe(elemento);
+        if (posicao == NAO_ESTA_PRESENTE) {
+            return false;
+        }
+        return this.remover(posicao);
+    }
+
+    // Retorna o número de elementos na lista
+    public int obterNumElementos() {
+        return this.numElementos;
+    }
+}
