@@ -1,0 +1,80 @@
+class Pilha {
+    private int topo;
+    private int[] elementos;
+    private int capacidade;
+
+    public Pilha(int capacidade) {
+        this.capacidade = capacidade;
+        this.elementos = new int[capacidade];
+        this.topo = -1; // Indica pilha vazia
+    }
+
+    public boolean isEmpty() {
+        return topo == -1;
+    }
+
+    public boolean isFull() {
+        return topo == capacidade - 1;
+    }
+
+    public void push(int elemento) {
+        if (isFull()) {
+            System.out.println("Erro: Pilha cheia!");
+            return;
+        }
+        elementos[++topo] = elemento;
+    }
+
+    public int pop() {
+        if (isEmpty()) {
+            System.out.println("Erro: Pilha vazia!");
+            return -1;
+        }
+        return elementos[topo--];
+    }
+
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Erro: Pilha vazia!");
+            return -1;
+        }
+        return elementos[topo];
+    }
+
+    public void imprimirPilha() {
+        System.out.print("Pilha: ");
+        for (int i = 0; i <= topo; i++) {
+            System.out.print(elementos[i] + " ");
+        }
+        System.out.println();
+    }
+}
+
+public class TestePilha {
+    public static void main(String[] args) {
+        Pilha pilha = new Pilha(5);
+        
+        // Adicionando elementos à pilha
+        pilha.push(10);
+        pilha.push(20);
+        pilha.push(30);
+        
+        // Imprimindo a pilha
+        pilha.imprimirPilha();
+        
+        // Verificando o topo da pilha
+        System.out.println("Topo da pilha: " + pilha.peek());
+        
+        // Removendo um elemento da pilha
+        System.out.println("Removendo: " + pilha.pop());
+        
+        // Imprimindo a pilha após remoção
+        pilha.imprimirPilha();
+        
+        // Adicionando mais elementos
+        pilha.push(40);
+        pilha.push(50);
+        pilha.push(60); // Deve mostrar erro: Pilha cheia
+        pilha.imprimirPilha();
+    }
+}
