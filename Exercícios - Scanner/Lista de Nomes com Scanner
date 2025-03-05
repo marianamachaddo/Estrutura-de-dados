@@ -1,0 +1,77 @@
+import java.util.Scanner;
+
+class ListaArrayString {
+    private String[] array;
+    private int tamanho;
+
+    public ListaArrayString(int capacidade) {
+        this.array = new String[capacidade];
+        this.tamanho = 0;
+    }
+
+    public void adicionar(String elemento) {
+        if (tamanho == array.length) {
+            System.out.println("Erro: Lista cheia!");
+            return;
+        }
+        array[tamanho++] = elemento;
+    }
+
+    public void remover(int posicao) {
+        if (posicao < 0 || posicao >= tamanho) {
+            System.out.println("Erro: Posição inválida!");
+            return;
+        }
+        for (int i = posicao; i < tamanho - 1; i++) {
+            array[i] = array[i + 1];
+        }
+        tamanho--;
+    }
+
+    public void imprimirLista() {
+        System.out.print("Lista de Nomes: ");
+        for (int i = 0; i < tamanho; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+    }
+
+    public boolean buscar(String nome) {
+        for (int i = 0; i < tamanho; i++) {
+            if (array[i].equals(nome)) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+public class TesteListaString {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ListaArrayString lista = new ListaArrayString(6);
+
+        System.out.println("Digite 5 nomes para adicionar à lista:");
+        for (int i = 0; i < 5; i++) {
+            String nome = scanner.nextLine();
+            lista.adicionar(nome);
+        }
+        lista.imprimirLista();
+
+        System.out.println("Digite a posição para remover (0 a 5):");
+        int posRemover = scanner.nextInt();
+        scanner.nextLine(); 
+        lista.remover(posRemover);
+        lista.imprimirLista();
+
+        System.out.println("Digite um nome para buscar:");
+        String nomeBuscar = scanner.nextLine();
+        if (lista.buscar(nomeBuscar)) {
+            System.out.println(nomeBuscar + " encontrado na lista.");
+        } else {
+            System.out.println(nomeBuscar + " não encontrado na lista.");
+        }
+
+        scanner.close();
+    }
+}
