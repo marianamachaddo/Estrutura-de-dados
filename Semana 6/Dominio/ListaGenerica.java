@@ -32,15 +32,15 @@ public class ListaGenerica<T> {
         for (int i = indice; i < tamanho - 1; i++) {
             elementos[i] = elementos[i + 1];
         }
-        elementos[tamanho - 1] = null; // Limpa o último elemento
+        elementos[tamanho - 1] = null; // Remove a referência do último elemento
         tamanho--;
     }
 
-    public int tamanho() {
-        return tamanho;
-    }
-
     public void exibir() {
+        if (tamanho == 0) {
+            System.out.println("Lista vazia.");
+            return;
+        }
         for (int i = 0; i < tamanho; i++) {
             System.out.println(elementos[i]);
         }
@@ -55,5 +55,9 @@ public class ListaGenerica<T> {
             novoArray[i] = elementos[i];
         }
         elementos = novoArray;
+    }
+
+    public int getTamanho() {
+        return tamanho;
     }
 }
