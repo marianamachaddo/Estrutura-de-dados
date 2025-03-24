@@ -23,7 +23,7 @@ public class ControlaAluno {
             System.out.println("5 - Sair");
             System.out.print("Escolha uma opção: ");
             int opcao = scanner.nextInt();
-            scanner.nextLine(); 
+            scanner.nextLine(); // Consumir a quebra de linha
 
             switch (opcao) {
                 case 1:
@@ -51,7 +51,7 @@ public class ControlaAluno {
     private void adicionarAluno() {
         System.out.print("Digite a matrícula: ");
         int matricula = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine(); // Consumir a quebra de linha
         System.out.print("Digite o nome do aluno: ");
         String nome = scanner.nextLine();
         listaAlunos.adicionar(new Aluno(matricula, nome));
@@ -59,8 +59,15 @@ public class ControlaAluno {
     }
 
     private void removerAluno() {
+        if (listaAlunos.getTamanho() == 0) {
+            System.out.println("A lista está vazia. Não há alunos para remover.");
+            return;
+        }
+
         System.out.print("Digite o índice do aluno a ser removido: ");
         int indiceRemover = scanner.nextInt();
+        scanner.nextLine();
+
         try {
             listaAlunos.remover(indiceRemover);
             System.out.println("Aluno removido com sucesso!");
@@ -77,6 +84,8 @@ public class ControlaAluno {
     private void buscarAluno() {
         System.out.print("Digite o índice do aluno: ");
         int indiceBuscar = scanner.nextInt();
+        scanner.nextLine();
+
         try {
             System.out.println("Aluno encontrado: " + listaAlunos.obter(indiceBuscar));
         } catch (IndexOutOfBoundsException e) {
@@ -85,7 +94,7 @@ public class ControlaAluno {
     }
 
     public static void main(String[] args) {
-        ControlaAluno controle = new ControlaAluno();
-        controle.exibirMenu();
+        ControlaAluno app = new ControlaAluno();
+        app.exibirMenu();
     }
 }
