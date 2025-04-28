@@ -1,0 +1,32 @@
+package controle;
+
+import dominio.Produto;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class OrdenaProdutos {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Produto[] produtos = new Produto[10];
+
+        System.out.println("Digite o nome e o preço de 10 produtos:");
+        for (int i = 0; i < 10; i++) {
+            System.out.print("\n" + (i + 1) + "º produto - Nome: ");
+            String nome = scanner.nextLine();
+            System.out.print((i + 1) + "º produto - Preço: R$ ");
+            double preco = scanner.nextDouble();
+            scanner.nextLine(); // Limpa o buffer
+            produtos[i] = new Produto(nome, preco);
+        }
+
+        Arrays.sort(produtos, Comparator.comparingDouble(Produto::getPreco).reversed());
+
+        System.out.println("\nProdutos do mais caro ao mais barato:");
+        for (Produto p : produtos) {
+            System.out.printf("%s - R$ %.2f\n", p.getNome(), p.getPreco());
+        }
+
+        scanner.close();
+    }
+}
