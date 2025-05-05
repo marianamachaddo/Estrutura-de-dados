@@ -1,0 +1,59 @@
+1. Qual é a principal característica do algoritmo Bubble Sort?
+A) Usa divisão recursiva para ordenar os elementos
+B) Insere elementos ordenadamente enquanto percorre
+C) Compara pares adjacentes e os troca se necessário (Resposta correta)
+D) Escolhe um pivô para dividir o array
+
+2. Qual algoritmo de ordenação é mais adequado para listas pequenas ou quase ordenadas?
+A) Merge Sort
+B) Insertion Sort (Resposta correta)
+C) Quick Sort
+D) Bubble Sort
+
+3. O que significa a notação O(n²) na análise de algoritmos?
+A) Que o algoritmo precisa de dois elementos para funcionar
+B) Que o tempo de execução dobra se o número de elementos dobra
+C) Que o tempo de execução cresce proporcional ao quadrado do número de elementos (Resposta correta)
+D) Que o tempo de execução é sempre constante
+
+4. Qual dos seguintes algoritmos possui complexidade O(n log n) no pior caso?
+A) Bubble Sort
+B) Merge Sort (Resposta correta)
+C) Insertion Sort
+D) Quick Sort
+
+5. O que mede o logaritmo na expressão O(n log n)?
+A) O número de comparações entre todos os elementos
+B) O número de trocas realizadas no array
+C) O número de vezes que o array pode ser dividido pela metade (Resposta correta)
+D) O tempo de execução real em segundos
+
+6. Qual estrutura do Java foi usada para contar comparações e trocas durante os algoritmos?
+A) Interface Runnable
+B) Classe Comparator
+C) Classe Contador personalizada (Resposta correta)
+D) ArrayList
+
+7. O algoritmo Quick Sort possui complexidade O(n²) em qual situação?
+A) Quando o array está quase ordenado
+B) Quando o pior pivô é escolhido repetidamente (Resposta correta)
+C) Quando há muitos elementos repetidos
+D) Quando a lista está vazia
+
+8. Em Java, o método Arrays.sort() usa qual algoritmo para ordenar arrays de primitivos como int[]?
+A) Merge Sort
+B) Bubble Sort
+C) Dual-Pivot QuickSort (Resposta correta)
+D) Heap Sort
+
+9. Por que Merge Sort não é considerado "in-place"?
+A) Porque modifica os dados originais
+B) Porque usa funções recursivas
+C) Porque utiliza memória extra para armazenar os arrays temporários (Resposta correta)
+D) Porque ordena apenas arrays de objetos
+
+10. O que é trocado ou contado como "troca" nos algoritmos de ordenação?
+A) Quando um elemento é comparado com outro
+B) Quando o array é dividido em duas partes
+C) Quando dois elementos mudam de posição (Resposta correta)
+D) Quando o algoritmo termina a execução
